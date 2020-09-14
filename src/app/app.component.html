@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Angular Demo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav" routerLinkActive="active">
+            <li class="nav-item"><a class="nav-link" routerLink="/accounts">Product_Demo</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/Form">Learnig</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" routerLink="/Task">Task</a></li> -->
+            <li class="nav-item"><a class="nav-link" routerLink="/Task1">CRUD</a></li>
+        </ul>
+    </div>
+  </nav><br><br>
+  
+<!-- <a [routerLink]="'/accounts'"> Login </a><br><br>
+<a [routerLink]="'/Form'"> Form </a><br><br>
+<a [routerLink]="'/Task'"> Task </a><br><br> -->
+<router-outlet></router-outlet>

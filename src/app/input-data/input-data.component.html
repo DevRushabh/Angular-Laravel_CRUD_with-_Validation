@@ -1,0 +1,19 @@
+<div>====One Way Binding===</div>
+<div>
+    <strong>{{firstName}}</strong>
+     <strong>{{lastName}}</strong>
+</div>
+<div>
+        <span [innerHTML] ='firstName'></span>            
+</div>
+<div>
+    <button (click)="myFunction()">Show alert</button>
+</div>
+<div>
+   ====End of One Way Binding====
+</div>
+<div>
+    Enter the value  : <input [(ngModel)] ='name'> 
+    <br> 
+     Entered value is:  {{name}} 
+</div>

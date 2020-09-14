@@ -1,0 +1,111 @@
+<div class="container">
+  <h1 class="well">User Details Form </h1>
+<div class="col-lg-12 well">
+<div class="row">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>First Name</label>
+              <input type="text" formControlName="firstName" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" required>
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">**First Name is required**</div>
+                <div *ngIf="f.firstName.errors.pattern">**First Name ( Alphabet Only - 16 Char. Max ) **</div>
+            </div>
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Last Name</label>
+              <input type="text" formControlName="lastName" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">**Last Name is required**</div>
+                <div *ngIf="f.lastName.errors.pattern">**Last Name( Alphabet Only - 16 Char. Max ) **</div>
+            </div>
+            </div>
+          </div>											
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="text" formControlName="phone"  maxlength="10"class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" >
+        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+          <div *ngIf="f.phone.errors.required">**Phone Number is required**</div>
+          <div *ngIf="f.phone.errors.pattern">**Phone ( Number - 10 Digit Max)</div>
+      </div>
+        </div>		
+        <div class="form-group">
+          <label>Gender</label>
+          <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" >
+            <option disabled>Select Gender</option>
+            <option>Choose Gender</option>
+            <option *ngFor="let suit of oppoSuits">{{suit}}</option>
+          </select>
+          <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+            <div *ngIf="f.gender.errors.required">**Gender is required**</div>
+        </div>
+        </div>	
+        <div class="form-group ">
+          <label>Hobby</label>
+          <a class="checkbox-items" >
+            <div *ngFor="let item of checkboxesDataList">
+              <label class="checkbox"><input type="checkbox" value="item.label"  formControlName="hobbies" id="item.id" [(ngModel)]="item.isChecked" (change)="changeSelection()" [ngModelOptions]="{standalone: true}"class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                {{item.label}}</label>
+            </div>
+          </a>
+            <div *ngIf="submitted && f.hobbies.errors" class="invalid-feedback">
+            <div *ngIf="f.hobbies.errors.required">**Hobby is required**</div>
+        </div>
+        </div>
+        <br><br>
+          <button class="btn btn-success">submit</button> 	&nbsp;
+          <button type="button" (click)="putProduct(product.id)" class="btn btn-primary">Update</button>	&nbsp;
+          <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+    </div>
+      </form> 
+      </div>
+</div>
+</div>
+<!-- ================================================================================================= -->
+<br><br>
+<h3>Tabel For 2 Way Binding</h3>
+<table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Gender</th>
+      <th>Hobby</th>
+    </tr>
+    <tr>
+      <td contenteditable='true'>{{ profileForm.value.firstName }}</td>
+      <td>{{ profileForm.value.lastName }}</td>
+      <td>{{ profileForm.value.phone }}</td>
+      <td>{{ profileForm.value.gender }}</td>
+      <td *ngFor="let item of selectedItemsList">{{item.label}}</td>
+    </tr>
+  </table><br><br>
+<!-- Edit and delete Tabel -->
+<h3>Tabel For Edit,Update,Delete</h3>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Gender</th>
+      <th>Hobby</th>
+      <th>Action</th>
+      
+    </tr>
+    <tr *ngFor="let mydata of data[0]">
+      <td>{{mydata.firstName}}</td>
+      <td>{{mydata.lastName}}</td>
+      <td>{{mydata.phone}}</td>
+      <td>{{mydata.gender}}</td>
+      <td>{{mydata.hobbies}}</td>
+      <td>
+        <button (click)="showProduct(mydata.id)" class="btn btn-primary">Edit</button>	&nbsp;
+        <button (click)="deleteProduct(mydata.id)" class="btn btn-danger">Delete</button>
+     </td>
+    </tr>
+</table>
+
+  
+  
+
